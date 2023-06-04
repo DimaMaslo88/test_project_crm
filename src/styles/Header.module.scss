@@ -1,0 +1,11 @@
+@import 'variables/variables';
+@import 'mixins/mixins';
+.header{
+  display: flex;
+  width: 100%;
+  height:80px;
+  background-color: $bgColor;
+  .title{
+    @include text($titleFontFamily,18px)
+  }
+}
