@@ -66,10 +66,15 @@
     .texts {
       @include text2($titleFontFamily, 20px, 500);
             line-height: 24px;
-      .li{
-        position: relative;
 
+      .li{
+        cursor: pointer;
+        position: relative;
         list-style-type:none;
+        .a{
+        text-decoration:none;
+          color:$bgColor3;
+        }
       }
 .li:before{
   content:"";

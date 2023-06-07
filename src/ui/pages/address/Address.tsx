@@ -5,9 +5,9 @@ import { Search } from 'assets/images/Search';
 import { instance, settings } from 'api/instance';
 import { AddressResponseType } from 'api/types/types';
 
+
 export const Address = () => {
   const [addresses, setAddresses] = useState<AddressResponseType[]>([]);
-  // const [postData,setPostData] = useState<string>('')
   const [value, setValue] = useState<string>('');
   const [error, setError] = useState<string>('Не может быть пустым');
   const [errorValue, setErrorValue] = useState<boolean>(false);
@@ -20,7 +20,7 @@ export const Address = () => {
   };
   const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setValue(e.currentTarget.value);
-    if (value.length < 3 ) {
+    if (value.length < 3) {
       setError('Минимальная длина 3 символа');
     } else {
       setError('');
@@ -29,17 +29,22 @@ export const Address = () => {
   };
   const setAddressesHandler = () => {
 
-    instance.post('/address', JSON.stringify({ query: value }), settings)
+    instance.post('suggest/address', JSON.stringify({ query: value }), settings)
       .then(res => setAddresses(res.data.suggestions))
       .catch(res => console.log(res.error));
   };
-  const setPostDataHandler =(postData:string)=>{
-    instance.post('/postal_unit',JSON.stringify({ query: postData }), settings)
-      .then(res=>console.log(res))
-      .catch(res =>console.log(res.error))
-  }
+  const setPostDataHandler = (postData: string) => {
+    debugger
+    instance.post('findById/postal_unit', JSON.stringify({ query: postData }), settings)
+      .then(res => {
+        console.log(res.data.suggestions);
+
+
+      })
+      .catch(res => console.log(res.error));
+  };
   return (
-    <div className={style.addressContainer} >
+    <div className={style.addressContainer}>
       <div className={style.title}>
         <Title title='Поиск адресов' />
       </div>
@@ -62,19 +67,26 @@ export const Address = () => {
         </button>
       </div>
 
-      {addresses.length > 0 && <div className={style.address}><ul className={style.title}>
-        <Title title='Адреса' />
-      </ul>
-      <div>
-        {addresses.map(address => {
-          return <ul key={address.fias_id} className={style.texts} onClick={()=>setPostDataHandler(address.unrestricted_value)}>
-         <li className={style.li}> {address.unrestricted_value}</li>
-          </ul>;
-        })}
-      </div>
+      {addresses.length > 0 && <div className={style.address}>
+        <ul className={style.title}>
+          <Title title='Адреса' />
+        </ul>
+        <div>
+          {addresses.map(address => {
+            return <ul key={address.fias_id} className={style.texts}>
+              <li className={style.li}>
+                <a href='https://dadata.ru/product/index-by-address/'
+                   className={style.a}
+                   onClick={() => setPostDataHandler('127642')}
+                >
+                  {address.unrestricted_value}
+                </a>
+              </li>
+            </ul>;
+          })}
+        </div>
       </div>
       }
-
 
 
     </div>

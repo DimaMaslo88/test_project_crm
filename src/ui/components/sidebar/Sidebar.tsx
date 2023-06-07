@@ -29,7 +29,7 @@ export const Sidebar = () => {
       </div>
       <div className={style.titleContainer}>
         <Search />
-        <div className={style.title}><NavLink to='/address' className={style.nav} ><Title
+        <div className={style.title}><NavLink to='/address' className={style.nav}><Title
           title='Поиск Адресов' /></NavLink></div>
       </div>
       <div className={style.titleContainer}>
@@ -51,12 +51,13 @@ export const Sidebar = () => {
       <div className={style.titleContainer}>
         <Settings />
         <div className={style.title}><Title title='Настройки' /></div>
-        {!open && <div className={style.arrow }><Arrow onClick={openSelectHandler} transform="rotate(180)" /></div>}
-        {open && <div className={style.arrow }><Arrow onClick={openSelectHandler} /></div>}
+        {!open && <div className={style.arrow}><Arrow onClick={openSelectHandler}
+                                                      transform='rotate(180)' /></div>}
+        {open && <div className={style.arrow}><Arrow onClick={openSelectHandler} /></div>}
 
       </div>
 
-      {open  ? <div className={style.select}>
+      {open ? <div className={style.select}>
           <div className={style.titleContainer}>
             <Ava2 />
             <div className={style.title}><Title title='Настройки Профиля' /></div>
@@ -66,7 +67,7 @@ export const Sidebar = () => {
             <div className={style.title}><Title title='Управление финансами' /></div>
           </div>
         </div>
-        :''}
+        : ''}
       <div className={style.titleContainer}>
         <LogOut />
         <div className={style.title}><Title title='Выход' /></div>
