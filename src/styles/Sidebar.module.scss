@@ -1,0 +1,42 @@
+@import 'variables/variables';
+@import 'mixins/mixins';
+
+.sidebarContainer {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  height: 100vh;
+  overflow: auto;
+
+  .sidebarTitle {
+    @include text2($titleFontFamily, 20px, 700)
+  }
+
+  .titleContainer {
+    display: flex;
+    margin-top: 25px;
+
+    .title {
+      margin-left: 20px;
+
+      .nav {
+        text-decoration: none;
+      }
+    }
+  }
+
+  .arrow {
+    margin-left: 100px;
+    cursor: pointer;
+  }
+
+  .select {
+    margin-left: 20px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .sidebarContainer {
+    display: none;
+  }
+}

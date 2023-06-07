@@ -1,0 +1,126 @@
+@import 'variables/variables';
+@import 'mixins/mixins';
+
+.addressContainer {
+  flex-direction: column;
+  margin-left: 20px;
+  display: flex;
+  height: 100vh;
+  width: 77%;
+  position: absolute;
+
+  .title {
+    @include text2($titleFontFamily, 26px, 700)
+  }
+
+  .title2 {
+    padding-top: 15px;
+    @include text2($titleFontFamily, 20px, 500)
+  }
+
+  .inputContainer {
+
+    display: flex;
+    padding-top: 20px;
+
+    .input {
+      width: 835px;
+      height: 70px;
+      border-radius: 10px;
+      border: 3px solid $bgColor;
+      @include text2($titleFontFamily, 26px, 500)
+    }
+
+    .input:focus {
+      border: 3px solid $bgColor;
+    }
+
+    .button {
+      width: 217px;
+      height: 75px;
+      background-color: $bgColor;
+      border-radius: 10px;
+      border: none;
+      margin-left: 75px;
+
+      .buttonItem {
+
+        @include text($titleFontFamily, 26px, 700)
+      }
+    }
+    .button:hover{
+      cursor: pointer;
+    }
+
+  }
+
+
+  .address {
+     box-shadow: 0px 2px 8px rgba(2, 0, 97, 0.25);
+    margin-top: 20px;
+    width: 100%;
+    height: 60vh;
+    border-radius: 10px;
+    overflow: auto;
+
+    .texts {
+      @include text2($titleFontFamily, 20px, 500);
+            line-height: 24px;
+      .li{
+        position: relative;
+
+        list-style-type:none;
+      }
+.li:before{
+  content:"";
+    position: absolute;
+    width: 80%;
+    border-bottom:1px #D7D7D7 solid;
+    bottom:-10px;
+    margin-left:10%;
+}
+    }
+
+  }
+
+  @media screen and (max-width: 1280px) and (min-width: 730px){
+    .inputContainer {
+
+      .input {
+        width: 400px;
+        height: 50px;
+      }
+
+      .button {
+        //margin-left: 0px;
+        width: 140px;
+        height: 50px;
+      }
+    }
+
+  }
+  @media screen and (max-width: 415px) {
+    .inputContainer {
+      flex-wrap: wrap;
+
+      padding-bottom: 10px;
+
+      .input {
+
+        width: 250px;
+        height: 30px;
+      }
+
+      .button {
+        margin-left: 0px;
+        width: 70px;
+        height: 30px;
+
+      }
+    }
+
+  }
+
+}
+
+
