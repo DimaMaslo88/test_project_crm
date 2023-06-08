@@ -8,5 +8,5 @@ https://dimamaslo88.github.io/test_project_crm
 
 ### Описание задания
 Был создан макет панели управления црм, с подключением к сервису https://dadata.ru/api/suggest/address/  и выводом  адресов введенных пользователем на страницу.
-Использовал  React, Typescript,React-router-dom
+Использовал  React, Typescript,React-router-dom. Redux не подключал,обошелся локальным стейтом,т.к.  посчитал, что нет необходимости  в этой библиотеке для данного тестового.
 
