@@ -11,8 +11,7 @@ export const Address = () => {
   const [value, setValue] = useState<string>('');
   const [error, setError] = useState<string>('Не может быть пустым');
   const [errorValue, setErrorValue] = useState<boolean>(false);
-  console.log(value, 'value');
-  console.log(addresses, 'адрес');
+
   const blurHandler = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.currentTarget.name === 'search') {
       setErrorValue(true);
@@ -28,21 +27,12 @@ export const Address = () => {
 
   };
   const setAddressesHandler = () => {
-
+// запрос на сервер за  адресами
     instance.post('suggest/address', JSON.stringify({ query: value }), settings)
       .then(res => setAddresses(res.data.suggestions))
       .catch(res => console.log(res.error));
   };
-  const setPostDataHandler = (postData: string) => {
-    debugger
-    instance.post('findById/postal_unit', JSON.stringify({ query: postData }), settings)
-      .then(res => {
-        console.log(res.data.suggestions);
 
-
-      })
-      .catch(res => console.log(res.error));
-  };
   return (
     <div className={style.addressContainer}>
       <div className={style.title}>
@@ -60,7 +50,6 @@ export const Address = () => {
           value={value}
           onChange={onChangeHandler}
           onBlur={blurHandler}
-
         />
         <button className={style.button} onClick={setAddressesHandler}>
           <span className={style.buttonItem}><Search fill='#FFFFFF' /> Поиск</span>
@@ -72,16 +61,16 @@ export const Address = () => {
           <Title title='Адреса' />
         </ul>
         <div>
-          {addresses.map(address => {
+          {addresses.map((address) => {
             return <ul key={address.fias_id} className={style.texts}>
               <li className={style.li}>
                 <a href='https://dadata.ru/product/index-by-address/'
                    className={style.a}
-                   onClick={() => setPostDataHandler('127642')}
                 >
                   {address.unrestricted_value}
                 </a>
               </li>
+
             </ul>;
           })}
         </div>
