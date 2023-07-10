@@ -48,7 +48,8 @@
         @include text($titleFontFamily, 26px, 700)
       }
     }
-    .button:hover{
+
+    .button:hover {
       cursor: pointer;
     }
 
@@ -56,7 +57,7 @@
 
 
   .address {
-     box-shadow: 0px 2px 8px rgba(2, 0, 97, 0.25);
+    box-shadow: 0px 2px 8px rgba(2, 0, 97, 0.25);
     margin-top: 20px;
     width: 100%;
     height: 60vh;
@@ -65,30 +66,32 @@
 
     .texts {
       @include text2($titleFontFamily, 20px, 500);
-            line-height: 24px;
+      line-height: 24px;
 
-      .li{
+      .li {
         cursor: pointer;
         position: relative;
-        list-style-type:none;
-        .a{
-        text-decoration:none;
-          color:$bgColor3;
+        list-style-type: none;
+
+        .a {
+          text-decoration: none;
+          color: $bgColor3;
         }
       }
-.li:before{
-  content:"";
-    position: absolute;
-    width: 80%;
-    border-bottom:1px #D7D7D7 solid;
-    bottom:-10px;
-    margin-left:10%;
-}
+
+      .li:before {
+        content: "";
+        position: absolute;
+        width: 80%;
+        border-bottom: 1px #D7D7D7 solid;
+        bottom: -10px;
+        margin-left: 10%;
+      }
     }
 
   }
 
-  @media screen and (max-width: 1280px) and (min-width: 730px){
+  @media screen and (max-width: 1280px) and (min-width: 730px) {
     .inputContainer {
 
       .input {
@@ -103,22 +106,23 @@
     }
 
   }
+
   @media screen and (max-width: 415px) {
     .inputContainer {
       flex-wrap: wrap;
-
+      justify-content: space-between;
       padding-bottom: 10px;
 
       .input {
 
-        width: 250px;
+        width: 200px;
         height: 30px;
       }
 
       .button {
         margin-left: 0px;
         width: 70px;
-        height: 30px;
+        height: 35px;
 
       }
     }
